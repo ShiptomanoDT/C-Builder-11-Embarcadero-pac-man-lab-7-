@@ -14,9 +14,7 @@ class TForm1 : public TForm
 __published:	// IDE-managed Components
 	TLabel *Label1;
 	TTimer *Timer1;
-	TLabel *Label2;
 	void __fastcall FormMouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
-	void __fastcall FormPaint(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 

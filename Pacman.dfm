@@ -13,7 +13,6 @@ object Form1: TForm1
   Position = poDesktopCenter
   OnCreate = FormCreate
   OnMouseMove = FormMouseMove
-  OnPaint = FormPaint
   TextHeight = 15
   object Label1: TLabel
     Left = 40
@@ -27,13 +26,6 @@ object Form1: TForm1
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
-  end
-  object Label2: TLabel
-    Left = 144
-    Top = 512
-    Width = 44
-    Height = 15
-    Caption = 'control: '
   end
   object Timer1: TTimer
     Interval = 16

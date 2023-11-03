@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
@@ -26,7 +26,7 @@ void dibujar_pacman(int &mov,int &up,int &down)
 	Form1->Canvas->Brush->Color = clYellow;
 	Form1->Canvas->Ellipse(0+mov, yc-100, 200+mov, yc+100);
 
-	// Dibujar una secci�n de Pac-Man (un tri�ngulo) como una boca abierta.
+	// Dibujar una seccion de Pac-Man (un triangulo) como una boca abierta.
 
 	Form1->Canvas->Pen->Color = colorFondo;
 	Form1->Canvas->Brush->Color = colorFondo;
@@ -43,25 +43,24 @@ void dibujar_pacman(int &mov,int &up,int &down)
 }
 void __fastcall TForm1::FormMouseMove(TObject *Sender, TShiftState Shift, int X, int Y)
 {
-	Label1->Caption = "X: "+IntToStr(X)+"Y: "+IntToStr(Y);
-}
-//---------------------------------------------------------------------------
-void __fastcall TForm1::FormPaint(TObject *Sender)
-{
-	//dibujar_pacman(0,0,0);
+	Label1->Caption = "X: "+IntToStr(X)+" Y: "+IntToStr(Y);
 }
 //---------------------------------------------------------------------------
 int movement = 0,movUp = 0,movDown = 0,cont = 0;bool estado = true;
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-	//dibujar_pacman(movement,movUp,movDown);
     // Limpia el area anterior de Pac-Man.
-    Form1->Canvas->Brush->Color = colorFondo;  // Establece el color de fondo.
+	Form1->Canvas->Brush->Color = colorFondo;  // Establece el color de fondo.
+    //Se anade un cuadrado que cubre el fondo del pacman para tapar el rastro
 	Form1->Canvas->FillRect(Rect(0, yc - 100, Form1->Width, yc + 100));
+
+	//se establece el incremento en el movimiento del pac man
 	if(movement + 200 <= Form1->Width+200)
 		movement+=7;
 	else
 		movement = -200;
+	//haciendo uso de la bandera "estado" se verifica cuando la boca del pac man
+	//debe abrirse y cerrarse
 	if(estado){
 		movUp+=10;
 		movDown-=10;
@@ -76,7 +75,6 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 		estado = false;
 	Form1->Canvas->Refresh();
 	dibujar_pacman(movement, movUp, movDown);
-	Label2->Caption = "cont: "+IntToStr(cont);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
